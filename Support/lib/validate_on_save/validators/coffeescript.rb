@@ -7,7 +7,7 @@ class VOS
         :info => "Running syntax check with CoffeeScript lint\n",
         :result => `"#{binary}" "#{filepath}" 2>&1`
           .sub(/^\s*/, '')
-          .gsub(/\x1b\[(?:1|39)m\x1b\[[23]{2}m/, ''),
+          .gsub(/\x1b\[\d{1,2}m(?:\x1b\[\d{1,2}m)?/, ''),
         :match_ok => /0 error\(s\)\, /i, # ignore warnings
         :match_line => /line (\d+)/i,
         :lang => "CoffeeScript"
